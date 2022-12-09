@@ -1,0 +1,19 @@
+Cấu trúc Folders
+
+1. Components => Components Global => Sử dụng ở nhiều module khác nhau
+
+2. Pages => Components tương ứng với Routes
+
+3. Layouts 
+
+4. Routes
+
+5. Assets 
+
+6. Services 
+
+6.1. Hooks
+
+6.2. Redux 
+
+7. Middleware
