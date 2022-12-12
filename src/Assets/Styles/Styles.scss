@@ -305,6 +305,9 @@ html::-webkit-scrollbar {
 .recently .header h1 {
   font-size: 14px;
 }
+.recently .singer {
+  margin-right: 5px;
+}
 .show {
   display: none;
 }
@@ -2898,6 +2901,10 @@ html::-webkit-scrollbar {
 }
 .color-title {
   color: white;
+  a {
+    color: currentColor;
+    text-decoration: none;
+  }
 }
 .action-controls {
   color: var(--color-pink);
