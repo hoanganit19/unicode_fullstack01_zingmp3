@@ -1,8 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import IonIcon from "@reacticons/ionicons";
 import SearchForm from "./SearchForm/SearchForm";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useSelector } from "react-redux";
+import { authSelector } from "../../Pages/Auth/authSlice";
+import clsx from "clsx";
 
 export default function Header() {
+  const [isHide, setHide] = useState(true);
+
+  const handleSetHide = () => {
+    setHide(isHide ? false : true);
+  };
+
+  const { loginWithRedirect, logout } = useAuth0();
+
+  const auth = useSelector(authSelector);
+
+  const { isLoading, isAuthenticated, user } = auth.userLogin;
+
+  console.log(user);
+
   return (
     <div className="zing-header">
       <div className="zing-left ">
@@ -235,12 +253,41 @@ export default function Header() {
           </ul>
         </div>
         <div className="zing-right-item">
-          <img
-            className="avatar"
-            src="https://s120-ava-talk-zmp3.zmdcdn.me/5/e/a/5/15/120/c1604d29641e7fd7ad325bfa0f2a29b1.jpg"
-            alt=""
-          />
+          {!isLoading &&
+            (isAuthenticated ? (
+              <img
+                className="avatar"
+                src={user.picture}
+                alt=""
+                onClick={handleSetHide}
+              />
+            ) : (
+              <img
+                className="avatar"
+                src="https://cdn.vectorstock.com/i/preview-1x/66/14/default-avatar-photo-placeholder-profile-picture-vector-21806614.jpg"
+                alt=""
+                onClick={() => {
+                  loginWithRedirect({ ui_locales: "vi" });
+                }}
+              />
+            ))}
         </div>
+        {!isLoading && isAuthenticated && (
+          <div className={clsx("profile", isHide && "hide")}>
+            <p> Xin chào: {user.name}</p>
+            <p>Tài khoản</p>
+            <p
+              onClick={() => {
+                if (window.confirm("Bạn có chắc chắn?")) {
+                  logout();
+                }
+              }}
+              style={{ cursor: "pointer" }}
+            >
+              Đăng xuất
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );

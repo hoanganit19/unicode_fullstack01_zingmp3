@@ -1,0 +1,12 @@
+Xây dựng tính năng đăng nhập 
+
+- Tự xây dựng => Cần phải có API (Logic xử lý trên server) => Client chỉ gửi thông tin và nhận kết quả
+
+- Dùng qua các bên thứ 3: 
+
++ Firebase 
++ Auth0
+
+=> Đều có package cho React JS
+
+=> Hỗ trợ đăng nhập mạng xã hội
