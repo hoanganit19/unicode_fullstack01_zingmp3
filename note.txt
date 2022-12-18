@@ -10,3 +10,15 @@ Xây dựng tính năng đăng nhập
 => Đều có package cho React JS
 
 => Hỗ trợ đăng nhập mạng xã hội
+
+Yêu cầu ngày 19/12/2022
+
+- Tạo Component Account để hiển thị thông tin cá nhân của user đăng nhập: Tìm hiểu api sau: https://auth0.com/docs/api/management/v2
+
+- Đăng ký Route: ca-nhan/tai-khoan
+
+- Thiết lập Middlewares AuthMiddleware cho Route ca-nhan 
+
+- Check trạng thái đăng nhập ở Middlewares để chắc chắn tài khoản đăng nhập mới có quyền truy cập
+
+- Test lại bằng cách Reload trang: ca-nhan/tai-khoan
