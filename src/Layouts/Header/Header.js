@@ -5,9 +5,13 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useSelector } from "react-redux";
 import { authSelector } from "../../Pages/Auth/authSlice";
 import clsx from "clsx";
+import useUrl from "../../Services/Hooks/useUrl";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   const [isHide, setHide] = useState(true);
+
+  const url = useUrl();
 
   const handleSetHide = () => {
     setHide(isHide ? false : true);
@@ -18,8 +22,6 @@ export default function Header() {
   const auth = useSelector(authSelector);
 
   const { isLoading, isAuthenticated, user } = auth.userLogin;
-
-  console.log(user);
 
   return (
     <div className="zing-header">
@@ -275,7 +277,7 @@ export default function Header() {
         {!isLoading && isAuthenticated && (
           <div className={clsx("profile", isHide && "hide")}>
             <p> Xin chào: {user.name}</p>
-            <p>Tài khoản</p>
+            <Link to={url.account}>Tài khoản</Link>
             <p
               onClick={() => {
                 if (window.confirm("Bạn có chắc chắn?")) {

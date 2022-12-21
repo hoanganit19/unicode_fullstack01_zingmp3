@@ -9,18 +9,31 @@ export default function useClient(serverApi = null) {
 
   const client = {
     ...endpoint,
-    callApi: async function (url, method, params = {}, body = {}) {
+    callApi: async function (
+      url,
+      method,
+      params = {},
+      body = {},
+      token = null
+    ) {
       if (Object.keys(params).length) {
         const searchQuery = new URLSearchParams(params).toString();
         url = url + "?" + searchQuery;
       }
 
       url = serverApi + url;
+
+      const headers = {
+        "Content-Type": "application/json",
+      };
+
+      if (token !== null) {
+        headers["Authorization"] = `Bearer ${token}`;
+      }
+
       const options = {
         method: method,
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: headers,
       };
       if (Object.keys(body).length) {
         options.body = JSON.stringify(body);
@@ -34,24 +47,24 @@ export default function useClient(serverApi = null) {
       };
     },
 
-    get: function (url, params = {}) {
-      return this.callApi(url, "GET", params);
+    get: function (url, params = {}, token = null) {
+      return this.callApi(url, "GET", params, {}, token);
     },
 
-    post: function (url, body, params) {
-      return this.callApi(url, "POST", params, body);
+    post: function (url, body, params, token = null) {
+      return this.callApi(url, "POST", params, body, token);
     },
 
-    put: function (url, body, params) {
-      return this.callApi(url, "PUT", params, body);
+    put: function (url, body, params, token = null) {
+      return this.callApi(url, "PUT", params, body, token);
     },
 
-    patch: function (url, body, params) {
-      return this.callApi(url, "PATCH", params, body);
+    patch: function (url, body, params, token = null) {
+      return this.callApi(url, "PATCH", params, body, token);
     },
 
-    delete: function (url, params) {
-      return this.callApi(url, "DELETE", params);
+    delete: function (url, params, token = null) {
+      return this.callApi(url, "DELETE", params, {}, token);
     },
   };
 
