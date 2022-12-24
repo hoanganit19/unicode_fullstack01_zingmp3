@@ -41,6 +41,10 @@ export default function useClient(serverApi = null) {
       const res = await fetch(url, options);
       const data = await res.json();
 
+      if (res.status == 404) {
+        window.location.href = "/404";
+      }
+
       return {
         response: res,
         data: data,

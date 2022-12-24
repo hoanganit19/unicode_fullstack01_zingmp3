@@ -91,5 +91,637 @@
       "id": 3,
       "name": "Lặng Yên"
     }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "Cà phê",
+      "thumbnail": "https://photo-zmp3.zmdcdn.me/cover/b/b/b/0/bbb0a8963e9ed3b81974613b52b9476c.jpg",
+      "banner": "https://photo-zmp3.zmdcdn.me/cover/9/5/3/4/9534e6652f113fc11d79247f5cdd69dd.jpg",
+      "playlists": [
+        {
+          "id": 1,
+          "name": "Coffee & Piano",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/4/c/2/64c261bc77496d3b0096598360eee691.jpg",
+          "singer": [
+            {
+              "id": 1,
+              "name": "Noo Phước Thịnh"
+            },
+            {
+              "id": 2,
+              "name": "Lê Bảo Bình"
+            }
+          ]
+        },
+
+        {
+          "id": 2,
+          "name": "Cafe cùng bạn bè",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/1/a/1/0/1a109c6c8781f99fe1e01af3ebe377aa.jpg",
+          "singer": [
+            
+            {
+              "id": 2,
+              "name": "Lê Bảo Bình"
+            }
+          ]
+        },
+
+        {
+          "id": 3,
+          "name": "Coffee & Piano",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/4/c/2/64c261bc77496d3b0096598360eee691.jpg",
+          "singer": [
+            {
+              "id": 1,
+              "name": "Noo Phước Thịnh"
+            },
+            {
+              "id": 2,
+              "name": "Lê Bảo Bình"
+            }
+          ]
+        },
+
+        {
+          "id": 4,
+          "name": "Cafe cùng bạn bè",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/1/a/1/0/1a109c6c8781f99fe1e01af3ebe377aa.jpg",
+          "singer": [
+            
+            {
+              "id": 2,
+              "name": "Lê Bảo Bình"
+            }
+          ]
+        },
+
+        {
+          "id": 5,
+          "name": "Coffee & Piano",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/4/c/2/64c261bc77496d3b0096598360eee691.jpg",
+          "singer": [
+            {
+              "id": 1,
+              "name": "Noo Phước Thịnh"
+            },
+            {
+              "id": 2,
+              "name": "Lê Bảo Bình"
+            }
+          ]
+        },
+
+        {
+          "id": 6,
+          "name": "Cafe cùng bạn bè",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/1/a/1/0/1a109c6c8781f99fe1e01af3ebe377aa.jpg",
+          "singer": [
+            
+            {
+              "id": 2,
+              "name": "Lê Bảo Bình"
+            }
+          ]
+        },
+
+        {
+          "id": 7,
+          "name": "Coffee & Piano",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/4/c/2/64c261bc77496d3b0096598360eee691.jpg",
+          "singer": [
+            {
+              "id": 1,
+              "name": "Noo Phước Thịnh"
+            },
+            {
+              "id": 2,
+              "name": "Lê Bảo Bình"
+            }
+          ]
+        },
+
+        {
+          "id": 8,
+          "name": "Cafe cùng bạn bè",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/1/a/1/0/1a109c6c8781f99fe1e01af3ebe377aa.jpg",
+          "singer": [
+            
+            {
+              "id": 2,
+              "name": "Lê Bảo Bình"
+            }
+          ]
+        }
+      ],
+      "created_at": "2022-12-12 05:00:30",
+      "updated_at": "2022-12-12 05:00:30"
+    },
+
+    {
+      "id": 2,
+      "name": "Tiệc tùng",
+      "thumbnail": "https://photo-zmp3.zmdcdn.me/cover/b/b/b/0/bbb0a8963e9ed3b81974613b52b9476c.jpg",
+      "banner": "https://photo-zmp3.zmdcdn.me/cover/9/5/3/4/9534e6652f113fc11d79247f5cdd69dd.jpg",
+      "playlists": [
+        {
+          "id": 1,
+          "name": "Coffee & Piano",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/4/c/2/64c261bc77496d3b0096598360eee691.jpg",
+          "singer": [
+            {
+              "id": 1,
+              "name": "Noo Phước Thịnh"
+            },
+            {
+              "id": 2,
+              "name": "Lê Bảo Bình"
+            }
+          ]
+        },
+
+        {
+          "id": 2,
+          "name": "Cafe cùng bạn bè",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/1/a/1/0/1a109c6c8781f99fe1e01af3ebe377aa.jpg",
+          "singer": [
+            
+            {
+              "id": 2,
+              "name": "Lê Bảo Bình"
+            }
+          ]
+        },
+
+        {
+          "id": 3,
+          "name": "Coffee & Piano",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/4/c/2/64c261bc77496d3b0096598360eee691.jpg",
+          "singer": [
+            {
+              "id": 1,
+              "name": "Noo Phước Thịnh"
+            },
+            {
+              "id": 2,
+              "name": "Lê Bảo Bình"
+            }
+          ]
+        },
+
+        {
+          "id": 4,
+          "name": "Cafe cùng bạn bè",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/1/a/1/0/1a109c6c8781f99fe1e01af3ebe377aa.jpg",
+          "singer": [
+            
+            {
+              "id": 2,
+              "name": "Lê Bảo Bình"
+            }
+          ]
+        },
+
+        {
+          "id": 5,
+          "name": "Coffee & Piano",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/4/c/2/64c261bc77496d3b0096598360eee691.jpg",
+          "singer": [
+            {
+              "id": 1,
+              "name": "Noo Phước Thịnh"
+            },
+            {
+              "id": 2,
+              "name": "Lê Bảo Bình"
+            }
+          ]
+        },
+
+        {
+          "id": 6,
+          "name": "Cafe cùng bạn bè",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/1/a/1/0/1a109c6c8781f99fe1e01af3ebe377aa.jpg",
+          "singer": [
+            
+            {
+              "id": 2,
+              "name": "Lê Bảo Bình"
+            }
+          ]
+        },
+
+        {
+          "id": 7,
+          "name": "Coffee & Piano",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/4/c/2/64c261bc77496d3b0096598360eee691.jpg",
+          "singer": [
+            {
+              "id": 1,
+              "name": "Noo Phước Thịnh"
+            },
+            {
+              "id": 2,
+              "name": "Lê Bảo Bình"
+            }
+          ]
+        },
+
+        {
+          "id": 8,
+          "name": "Cafe cùng bạn bè",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/1/a/1/0/1a109c6c8781f99fe1e01af3ebe377aa.jpg",
+          "singer": [
+            
+            {
+              "id": 2,
+              "name": "Lê Bảo Bình"
+            }
+          ]
+        }
+      ],
+      "created_at": "2022-12-12 05:00:30",
+      "updated_at": "2022-12-12 05:00:30"
+    },
+
+    {
+      "id": 3,
+      "name": "Chơi game",
+      "thumbnail": "https://photo-zmp3.zmdcdn.me/cover/b/b/b/0/bbb0a8963e9ed3b81974613b52b9476c.jpg",
+      "banner": "https://photo-zmp3.zmdcdn.me/cover/9/5/3/4/9534e6652f113fc11d79247f5cdd69dd.jpg",
+      "playlists": [
+        {
+          "id": 1,
+          "name": "Coffee & Piano",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/4/c/2/64c261bc77496d3b0096598360eee691.jpg",
+          "singer": [
+            {
+              "id": 1,
+              "name": "Noo Phước Thịnh"
+            },
+            {
+              "id": 2,
+              "name": "Lê Bảo Bình"
+            }
+          ]
+        },
+
+        {
+          "id": 2,
+          "name": "Cafe cùng bạn bè",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/1/a/1/0/1a109c6c8781f99fe1e01af3ebe377aa.jpg",
+          "singer": [
+            
+            {
+              "id": 2,
+              "name": "Lê Bảo Bình"
+            }
+          ]
+        },
+
+        {
+          "id": 3,
+          "name": "Coffee & Piano",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/4/c/2/64c261bc77496d3b0096598360eee691.jpg",
+          "singer": [
+            {
+              "id": 1,
+              "name": "Noo Phước Thịnh"
+            },
+            {
+              "id": 2,
+              "name": "Lê Bảo Bình"
+            }
+          ]
+        },
+
+        {
+          "id": 4,
+          "name": "Cafe cùng bạn bè",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/1/a/1/0/1a109c6c8781f99fe1e01af3ebe377aa.jpg",
+          "singer": [
+            
+            {
+              "id": 2,
+              "name": "Lê Bảo Bình"
+            }
+          ]
+        },
+
+        {
+          "id": 5,
+          "name": "Coffee & Piano",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/4/c/2/64c261bc77496d3b0096598360eee691.jpg",
+          "singer": [
+            {
+              "id": 1,
+              "name": "Noo Phước Thịnh"
+            },
+            {
+              "id": 2,
+              "name": "Lê Bảo Bình"
+            }
+          ]
+        },
+
+        {
+          "id": 6,
+          "name": "Cafe cùng bạn bè",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/1/a/1/0/1a109c6c8781f99fe1e01af3ebe377aa.jpg",
+          "singer": [
+            
+            {
+              "id": 2,
+              "name": "Lê Bảo Bình"
+            }
+          ]
+        },
+
+        {
+          "id": 7,
+          "name": "Coffee & Piano",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/4/c/2/64c261bc77496d3b0096598360eee691.jpg",
+          "singer": [
+            {
+              "id": 1,
+              "name": "Noo Phước Thịnh"
+            },
+            {
+              "id": 2,
+              "name": "Lê Bảo Bình"
+            }
+          ]
+        },
+
+        {
+          "id": 8,
+          "name": "Cafe cùng bạn bè",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/1/a/1/0/1a109c6c8781f99fe1e01af3ebe377aa.jpg",
+          "singer": [
+            
+            {
+              "id": 2,
+              "name": "Lê Bảo Bình"
+            }
+          ]
+        }
+      ],
+      "created_at": "2022-12-12 05:00:30",
+      "updated_at": "2022-12-12 05:00:30"
+    },
+
+    {
+      "id": 4,
+      "name": "Chill",
+      "thumbnail": "https://photo-zmp3.zmdcdn.me/cover/b/b/b/0/bbb0a8963e9ed3b81974613b52b9476c.jpg",
+      "banner": "https://photo-zmp3.zmdcdn.me/cover/9/5/3/4/9534e6652f113fc11d79247f5cdd69dd.jpg",
+      "playlists": [
+        {
+          "id": 1,
+          "name": "Coffee & Piano",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/4/c/2/64c261bc77496d3b0096598360eee691.jpg",
+          "singer": [
+            {
+              "id": 1,
+              "name": "Noo Phước Thịnh"
+            },
+            {
+              "id": 2,
+              "name": "Lê Bảo Bình"
+            }
+          ]
+        },
+
+        {
+          "id": 2,
+          "name": "Cafe cùng bạn bè",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/1/a/1/0/1a109c6c8781f99fe1e01af3ebe377aa.jpg",
+          "singer": [
+            
+            {
+              "id": 2,
+              "name": "Lê Bảo Bình"
+            }
+          ]
+        },
+
+        {
+          "id": 3,
+          "name": "Coffee & Piano",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/4/c/2/64c261bc77496d3b0096598360eee691.jpg",
+          "singer": [
+            {
+              "id": 1,
+              "name": "Noo Phước Thịnh"
+            },
+            {
+              "id": 2,
+              "name": "Lê Bảo Bình"
+            }
+          ]
+        },
+
+        {
+          "id": 4,
+          "name": "Cafe cùng bạn bè",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/1/a/1/0/1a109c6c8781f99fe1e01af3ebe377aa.jpg",
+          "singer": [
+            
+            {
+              "id": 2,
+              "name": "Lê Bảo Bình"
+            }
+          ]
+        },
+
+        {
+          "id": 5,
+          "name": "Coffee & Piano",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/4/c/2/64c261bc77496d3b0096598360eee691.jpg",
+          "singer": [
+            {
+              "id": 1,
+              "name": "Noo Phước Thịnh"
+            },
+            {
+              "id": 2,
+              "name": "Lê Bảo Bình"
+            }
+          ]
+        },
+
+        {
+          "id": 6,
+          "name": "Cafe cùng bạn bè",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/1/a/1/0/1a109c6c8781f99fe1e01af3ebe377aa.jpg",
+          "singer": [
+            
+            {
+              "id": 2,
+              "name": "Lê Bảo Bình"
+            }
+          ]
+        },
+
+        {
+          "id": 7,
+          "name": "Coffee & Piano",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/4/c/2/64c261bc77496d3b0096598360eee691.jpg",
+          "singer": [
+            {
+              "id": 1,
+              "name": "Noo Phước Thịnh"
+            },
+            {
+              "id": 2,
+              "name": "Lê Bảo Bình"
+            }
+          ]
+        },
+
+        {
+          "id": 8,
+          "name": "Cafe cùng bạn bè",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/1/a/1/0/1a109c6c8781f99fe1e01af3ebe377aa.jpg",
+          "singer": [
+            
+            {
+              "id": 2,
+              "name": "Lê Bảo Bình"
+            }
+          ]
+        }
+      ],
+      "created_at": "2022-12-12 05:00:30",
+      "updated_at": "2022-12-12 05:00:30"
+    },
+
+    {
+      "id": 5,
+      "name": "Thư giãn",
+      "thumbnail": "https://photo-zmp3.zmdcdn.me/cover/b/b/b/0/bbb0a8963e9ed3b81974613b52b9476c.jpg",
+      "banner": "https://photo-zmp3.zmdcdn.me/cover/9/5/3/4/9534e6652f113fc11d79247f5cdd69dd.jpg",
+      "playlists": [
+        {
+          "id": 1,
+          "name": "Coffee & Piano",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/4/c/2/64c261bc77496d3b0096598360eee691.jpg",
+          "singer": [
+            {
+              "id": 1,
+              "name": "Noo Phước Thịnh"
+            },
+            {
+              "id": 2,
+              "name": "Lê Bảo Bình"
+            }
+          ]
+        },
+
+        {
+          "id": 2,
+          "name": "Cafe cùng bạn bè",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/1/a/1/0/1a109c6c8781f99fe1e01af3ebe377aa.jpg",
+          "singer": [
+            
+            {
+              "id": 2,
+              "name": "Lê Bảo Bình"
+            }
+          ]
+        },
+
+        {
+          "id": 3,
+          "name": "Coffee & Piano",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/4/c/2/64c261bc77496d3b0096598360eee691.jpg",
+          "singer": [
+            {
+              "id": 1,
+              "name": "Noo Phước Thịnh"
+            },
+            {
+              "id": 2,
+              "name": "Lê Bảo Bình"
+            }
+          ]
+        },
+
+        {
+          "id": 4,
+          "name": "Cafe cùng bạn bè",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/1/a/1/0/1a109c6c8781f99fe1e01af3ebe377aa.jpg",
+          "singer": [
+            
+            {
+              "id": 2,
+              "name": "Lê Bảo Bình"
+            }
+          ]
+        },
+
+        {
+          "id": 5,
+          "name": "Coffee & Piano",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/4/c/2/64c261bc77496d3b0096598360eee691.jpg",
+          "singer": [
+            {
+              "id": 1,
+              "name": "Noo Phước Thịnh"
+            },
+            {
+              "id": 2,
+              "name": "Lê Bảo Bình"
+            }
+          ]
+        },
+
+        {
+          "id": 6,
+          "name": "Cafe cùng bạn bè",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/1/a/1/0/1a109c6c8781f99fe1e01af3ebe377aa.jpg",
+          "singer": [
+            
+            {
+              "id": 2,
+              "name": "Lê Bảo Bình"
+            }
+          ]
+        },
+
+        {
+          "id": 7,
+          "name": "Coffee & Piano",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/6/4/c/2/64c261bc77496d3b0096598360eee691.jpg",
+          "singer": [
+            {
+              "id": 1,
+              "name": "Noo Phước Thịnh"
+            },
+            {
+              "id": 2,
+              "name": "Lê Bảo Bình"
+            }
+          ]
+        },
+
+        {
+          "id": 8,
+          "name": "Cafe cùng bạn bè",
+          "thumbnail": "https://photo-resize-zmp3.zmdcdn.me/w320_r1x1_webp/cover/1/a/1/0/1a109c6c8781f99fe1e01af3ebe377aa.jpg",
+          "singer": [
+            
+            {
+              "id": 2,
+              "name": "Lê Bảo Bình"
+            }
+          ]
+        }
+      ],
+      "created_at": "2022-12-12 05:00:30",
+      "updated_at": "2022-12-12 05:00:30"
+    }
   ]
+  
 }

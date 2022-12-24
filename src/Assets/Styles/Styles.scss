@@ -30,6 +30,15 @@ html::-webkit-scrollbar {
   --height-footer: 60px;
 }
 
+img{
+  max-width: 100%;
+  height: auto;
+}
+
+.container{
+  padding: 0 59px;
+}
+
 /* ------------------------ */
 #app {
   position: absolute;
@@ -56,8 +65,7 @@ html::-webkit-scrollbar {
   position: absolute;
   width: 100%;
   height: 100%;
-  background-image: url("../Images/Themes/backroundThemes/2.jpg");
-  background-size: 1920px auto;
+  background: #061D4F;
   z-index: -1;
 }
 .zing-logo-pc img {

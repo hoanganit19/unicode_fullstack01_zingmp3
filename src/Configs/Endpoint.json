@@ -2,5 +2,6 @@
     "songs": "/songs",
     "singles": "/singles",
     "keywords": "/keywords",
-    "trendingSearch": "/trending_search"
+    "trendingSearch": "/trending_search",
+    "categories": "/categories"
 }

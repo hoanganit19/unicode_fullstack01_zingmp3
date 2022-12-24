@@ -17,3 +17,7 @@ Cấu trúc Folders
 6.2. Redux 
 
 7. Middleware
+
+Danh sách thể loại => Danh sách playlist => Danh sách bài hát
+
+Nếu lỗi từ server (không phải 200) => Redirect về not found
