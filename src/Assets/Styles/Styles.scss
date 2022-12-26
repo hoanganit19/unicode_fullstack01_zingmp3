@@ -685,7 +685,7 @@ img{
   padding: 0 10vw;
 }
 .individual-ctn2-right {
-  height: 24vw;
+  height: 100vh;
   width: 100%;
   padding-left: 50px;
   padding-right: 150px;
@@ -1267,8 +1267,9 @@ img{
   z-index: 2;
   border-radius: 20px;
   background-color: #b567d9;
+  transition: none;
 }
-.progressCurrent::after {
+.progressCurrent span {
   position: absolute;
   content: " ";
   width: 10px;
@@ -1283,7 +1284,7 @@ img{
 .progress:hover {
   height: 6px;
 }
-.progress:hover .progressCurrent::after {
+.progress:hover .progressCurrent span {
   display: block;
 }
 

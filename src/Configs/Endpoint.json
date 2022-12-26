@@ -3,5 +3,6 @@
     "singles": "/singles",
     "keywords": "/keywords",
     "trendingSearch": "/trending_search",
-    "categories": "/categories"
+    "categories": "/categories",
+    "playlists": "/playlists"
 }

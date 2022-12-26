@@ -6,6 +6,7 @@ import Sidebar from "../Sidebar/Sidebar";
 import { authActions } from "../../Pages/Auth/authSlice";
 import { useDispatch } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
+import Player from "../../Components/Player/Player";
 
 const { getUser } = authActions;
 
@@ -36,6 +37,7 @@ export default function Main() {
               <RouteCore />
             </div>
           </div>
+          <Player />
         </div>
       </div>
     </div>

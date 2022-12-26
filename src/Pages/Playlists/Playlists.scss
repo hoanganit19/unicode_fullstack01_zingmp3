@@ -1,0 +1,46 @@
+.playlist{
+    color: #fff;
+    .playlist-image{
+        img{
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+    }
+    .playlist-info{
+        padding: 20px 0;
+        color: #fff;
+        text-align: center;
+        line-height: 1.5;
+        a{
+            text-decoration: none;
+            color: #efefef;
+        }
+        p{
+            color: #efefef;
+        }
+
+        .individual-btn{
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        
+       
+    }
+
+    .singer-list{
+        a+a::before{
+            content: ', ';
+            color: #fff;
+        }
+        a:hover{
+            color: #999;
+            &::before{
+                color: #fff;
+            }
+        }
+    }
+
+  
+}

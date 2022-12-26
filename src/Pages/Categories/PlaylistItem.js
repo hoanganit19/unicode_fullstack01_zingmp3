@@ -40,7 +40,7 @@ function PlaylistItem({ id, name, thumbnail, singer }) {
 
   return (
     <div className="categories--item">
-      <Link href={url.getPlaylist(id, name)}>
+      <Link to={url.getPlaylist(id, name)}>
         <img src={thumbnail} />
         <h2>{name}</h2>
       </Link>
