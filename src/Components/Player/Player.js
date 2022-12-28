@@ -1,17 +1,28 @@
 import React, { useEffect, useRef } from "react";
 import IonIcon from "@reacticons/ionicons";
 
+let isMouseDown = false;
+let initialClientX = 0;
+let initialRate = 0;
+
 export default function Player() {
+  console.log("re-render");
   const timerRangerRef = useRef();
 
   useEffect(() => {
-    document.addEventListener("mousemove", () => {
-      console.log("move");
+    document.addEventListener("mousemove", (e) => {
+      //console.log(isMouseDown);
+      if (isMouseDown) {
+        e.target.style.userSelect = "none";
+        handleDragTimer(e);
+      }
     });
+    document.addEventListener("mouseup", handleClickUpTimer);
   }, []);
 
   const getRateTimer = (offsetX) => {
     const progressWith = timerRangerRef.current.clientWidth;
+    // console.log(offsetX);
     const rate = (offsetX / progressWith) * 100;
     return rate;
   };
@@ -19,15 +30,62 @@ export default function Player() {
   //(parseInt(initialSize) + parseInt(e.clientX - initialPos))
 
   const handleClickProgress = (e) => {
+    initialClientX = e.clientX; //clientX ban đầu
+    isMouseDown = true;
     const rate = getRateTimer(e.nativeEvent.offsetX);
     timerRangerRef.current.children[0].style.width = `${rate}%`;
+    initialRate = rate;
+    console.log(rate);
   };
 
   const handleDragTimer = (e) => {
-    console.log("start");
+    //const rate = getRateTimer(e.offsetX);
+    //console.log(e.clientX);
 
-    const rate = getRateTimer(e.nativeEvent.offsetX);
-    timerRangerRef.current.children[0].style.width = `${rate}%`;
+    const rate = getRateMove(e);
+
+    rate.then((rate) => {
+      if (rate < 0) {
+        rate = 0;
+      }
+
+      if (rate > 100) {
+        rate = 100;
+      }
+
+      if (rate >= 0 && rate <= 100) {
+        timerRangerRef.current.children[0].style.width = `${rate}%`;
+      }
+    });
+  };
+
+  const getRateMove = async (e) => {
+    //Tính clientX hiện tại
+    const clientX = e.clientX;
+
+    // console.log(clientX);
+
+    //Khoảng đã kéo
+    const spaceMove = clientX - initialClientX;
+
+    const rate = getRateTimer(spaceMove) + initialRate;
+
+    return rate;
+  };
+
+  // const handleMouseOverTimer = (e) => {
+  //   console.log(e);
+  // };
+
+  const handleClickDownTimer = (e) => {
+    e.stopPropagation();
+    //console.log("click down", e.clientX);
+    initialClientX = e.clientX;
+    isMouseDown = true;
+  };
+
+  const handleClickUpTimer = (e) => {
+    isMouseDown = false;
   };
 
   return (
@@ -116,10 +174,10 @@ export default function Player() {
             <div
               className="progress"
               ref={timerRangerRef}
-              onClick={handleClickProgress}
+              onMouseDown={handleClickProgress}
             >
               <div className="progressCurrent" style={{ width: "0" }}>
-                <span onDragStart={handleDragTimer}></span>
+                <span onMouseDown={handleClickDownTimer}></span>
               </div>
             </div>
             <div className="time-end color-title">05:02</div>
