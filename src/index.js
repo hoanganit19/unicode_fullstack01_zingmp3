@@ -7,6 +7,11 @@ import { BrowserRouter } from "react-router-dom";
 import { Auth0Provider } from "@auth0/auth0-react";
 import { Provider } from "react-redux";
 import { store } from "./Services/Redux/Store";
+// var dotenv = require("dotenv");
+// var dotenvExpand = require("dotenv-expand");
+
+// var myEnv = dotenv.config();
+// dotenvExpand.expand(myEnv);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
