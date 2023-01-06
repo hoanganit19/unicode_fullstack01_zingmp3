@@ -1,33 +1,63 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import IonIcon from "@reacticons/ionicons";
+import useTime from "../../Services/Hooks/useTime";
+import { useSelector, useDispatch } from "react-redux";
+import { playerSelector } from "./playerSlice";
+import { playerActions } from "./playerSlice";
+import clsx from "clsx";
 
 let isMouseDown = false;
 let initialClientX = 0;
 let initialRate = 0;
+let currentTime = 0;
+let isSeeking = false;
+let currentRate = 0;
+
+const { setPlayerStatus } = playerActions;
 
 export default function Player() {
-  console.log("re-render");
+  const dispatch = useDispatch();
+  const { playerStatus, song } = useSelector(playerSelector);
+  const time = useTime();
   const timerRangerRef = useRef();
+  const audioRef = useRef();
+  const [duration, setDuration] = useState(0);
 
   useEffect(() => {
-    document.addEventListener("mousemove", (e) => {
-      //console.log(isMouseDown);
-      if (isMouseDown) {
-        e.target.style.userSelect = "none";
-        handleDragTimer(e);
-      }
-    });
-    document.addEventListener("mouseup", handleClickUpTimer);
-  }, []);
+    if (duration > 0) {
+      document.addEventListener("mousemove", (e) => {
+        if (isMouseDown) {
+          e.target.style.userSelect = "none";
+          handleDragTimer(e);
+        }
+      });
+      document.addEventListener("mouseup", handleClickUpTimer);
+    }
+  }, [duration]);
+
+  //Phương thức xử lý liên quan đến audio
+  const loadDataAudio = () => {
+    const duration = audioRef.current.duration;
+    setDuration(duration);
+  };
+
+  const setCurrentTime = (rate) => {
+    /*
+    rate = current / duration * 100
+    => current = rate * duration / 100
+    */
+    currentTime = (rate * duration) / 100;
+
+    timerRangerRef.current.previousElementSibling.children[0].innerText =
+      time.getMins(currentTime);
+  };
 
   const getRateTimer = (offsetX) => {
     const progressWith = timerRangerRef.current.clientWidth;
-    // console.log(offsetX);
+
     const rate = (offsetX / progressWith) * 100;
     return rate;
   };
-
-  //(parseInt(initialSize) + parseInt(e.clientX - initialPos))
 
   const handleClickProgress = (e) => {
     initialClientX = e.clientX; //clientX ban đầu
@@ -35,7 +65,9 @@ export default function Player() {
     const rate = getRateTimer(e.nativeEvent.offsetX);
     timerRangerRef.current.children[0].style.width = `${rate}%`;
     initialRate = rate;
-    console.log(rate);
+    currentRate = rate;
+    setCurrentTime(rate);
+    audioRef.current.currentTime = (rate * duration) / 100;
   };
 
   const handleDragTimer = (e) => {
@@ -55,6 +87,12 @@ export default function Player() {
 
       if (rate >= 0 && rate <= 100) {
         timerRangerRef.current.children[0].style.width = `${rate}%`;
+
+        setCurrentTime(rate);
+
+        isSeeking = true;
+
+        currentRate = rate;
       }
     });
   };
@@ -63,10 +101,10 @@ export default function Player() {
     //Tính clientX hiện tại
     const clientX = e.clientX;
 
-    // console.log(clientX);
-
     //Khoảng đã kéo
     const spaceMove = clientX - initialClientX;
+
+    //console.log(clientX, initialClientX);
 
     const rate = getRateTimer(spaceMove) + initialRate;
 
@@ -81,25 +119,59 @@ export default function Player() {
     e.stopPropagation();
     //console.log("click down", e.clientX);
     initialClientX = e.clientX;
+    //console.log(initialClientX);
     isMouseDown = true;
   };
 
   const handleClickUpTimer = (e) => {
     isMouseDown = false;
+    isSeeking = false;
+    initialRate = currentRate;
+    audioRef.current.currentTime = currentTime;
   };
+
+  //Click vào nút play
+  const handlePlay = () => {
+    if (audioRef.current.paused) {
+      audioRef.current.play();
+    } else {
+      audioRef.current.pause();
+    }
+
+    //Cập nhật state lên redux
+    dispatch(setPlayerStatus(audioRef.current.paused ? "paused" : "play"));
+  };
+
+  //Cập nhật timer khi nhạc chạy
+  const handleTimeUpdate = () => {
+    const currentTime = audioRef.current.currentTime;
+    //Tỉnh tỷ lệ phần trăm
+    const rate = (currentTime / duration) * 100;
+    if (!isSeeking) {
+      setCurrentTime(rate);
+      timerRangerRef.current.children[0].style.width = `${rate}%`;
+    }
+  };
+
+  const { name, image, source } = song;
 
   return (
     <div className="zing-controls">
       <div className="audio">
-        <audio src="./music/list-song/13.m4a" />
+        <audio
+          src={source}
+          ref={audioRef}
+          onLoadedData={loadDataAudio}
+          onTimeUpdate={handleTimeUpdate}
+        />
       </div>
       <div className="l-4 m-3 c-9">
         <div className=" zing-control-left zing-control-left-action">
           <div className="control-left-img " style={{ marginLeft: 0 }}>
-            <img src="/img/songs/13.webp" alt="" />
+            <img src={image} alt="" />
           </div>
           <div className="control-left-title">
-            <h1 className="color-title">2 Phút Hơn</h1>
+            <h1 className="color-title">{name}</h1>
             <small className="color-small">Phao, KAIZ Remix</small>
           </div>
           <div className="icon-favorite color-small " data-index="${index}">
@@ -142,22 +214,29 @@ export default function Player() {
               <i className="fa-solid fa-backward-step" />
             </div>
             <div className="play c-0">
-              <div className="play-music control-icon action-hover  color-title">
+              <div
+                className="play-music control-icon action-hover  color-title"
+                onClick={handlePlay}
+              >
                 <IonIcon
-                  name="play-outline"
+                  name={clsx(
+                    playerStatus === "play"
+                      ? "pause-circle-outline"
+                      : "play-outline"
+                  )}
                   role="img"
                   className="md hydrated"
                   aria-label="play outline"
                 />
               </div>
-              <div className="pause-music control-icon action-hover  color-title ">
+              {/* <div className="pause-music control-icon action-hover  color-title ">
                 <IonIcon
                   name="pause-circle-outline"
                   role="img"
                   className="md hydrated"
                   aria-label="pause circle outline"
                 />
-              </div>
+              </div> */}
             </div>
             <div className="icon-control-right control-icon action-hover color-title ">
               <i className="fa-solid fa-forward-step" />
@@ -168,8 +247,7 @@ export default function Player() {
           </div>
           <div className="control-handle-time c-0">
             <div className="time-begin color-title">
-              <span className="minute">00</span>:
-              <span className="second">00</span>
+              <span className="minute">00:00</span>
             </div>
             <div
               className="progress"
@@ -180,7 +258,7 @@ export default function Player() {
                 <span onMouseDown={handleClickDownTimer}></span>
               </div>
             </div>
-            <div className="time-end color-title">05:02</div>
+            <div className="time-end color-title">{time.getMins(duration)}</div>
           </div>
         </div>
       </div>

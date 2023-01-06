@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "Cơn mưa băng giá",
-      "source": "",
+      "source": "/mp3/ai-chung-tinh-duoc-mai.mp3",
       "duration": "04:46",
       "listen_count": 0,
       "follow_count": 0,
@@ -24,7 +24,7 @@
     {
       "id": 2,
       "name": "Ai chung tình được mãi",
-      "source": "",
+      "source": "/mp3/ai-chung-tinh-duoc-mai.mp3",
       "duration": "03:46",
       "listen_count": 0,
       "follow_count": 0,
@@ -41,7 +41,7 @@
     {
       "id": 3,
       "name": "Yêu Vội Vàng",
-      "source": "",
+      "source": "/mp3/yeu-voi-vang-remix.mp3",
       "duration": "03:46",
       "listen_count": 0,
       "follow_count": 0,
@@ -743,7 +743,7 @@
         {
           "id": 1,
           "name": "Cơn mưa băng giá",
-          "source": "",
+          "source": "/mp3/ai-chung-tinh-duoc-mai.mp3",
           "duration": "04:46",
           "listen_count": 0,
           "follow_count": 0,
@@ -764,7 +764,7 @@
         {
           "id": 2,
           "name": "Ai chung tình được mãi",
-          "source": "",
+          "source": "/mp3/ai-chung-tinh-duoc-mai.mp3",
           "duration": "03:46",
           "listen_count": 0,
           "follow_count": 0,
@@ -781,7 +781,7 @@
         {
           "id": 3,
           "name": "Yêu Vội Vàng",
-          "source": "",
+          "source": "/mp3/yeu-voi-vang-remix.mp3",
           "duration": "03:46",
           "listen_count": 0,
           "follow_count": 0,

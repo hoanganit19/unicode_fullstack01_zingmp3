@@ -7,9 +7,17 @@ import moment from "moment/moment";
 import "moment/locale/vi";
 import useUrl from "../../Services/Hooks/useUrl";
 import SongItem from "./SongItem";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  playerActions,
+  playerSelector,
+} from "../../Components/Player/playerSlice";
 moment.locale("vi");
 
+const { setSong } = playerActions;
+
 const Playlists = () => {
+  const dispatch = useDispatch();
   const client = useClient();
   const { id } = useParams();
   const [playlist, setPlaylist] = useState([]);
@@ -21,7 +29,12 @@ const Playlists = () => {
   const getPlaylist = async () => {
     const res = await client.get(client.playlists + "/" + id);
     setPlaylist(res.data);
+    console.log(res.data);
     setLoading(false);
+  };
+
+  const handlePlaySong = (song) => {
+    dispatch(setSong(song));
   };
 
   const { name, thumbnail, banner, updated_at, singer, follow, songs } =
@@ -93,7 +106,15 @@ const Playlists = () => {
                     </div>
                   </li>
                   {songs.length > 0 ? (
-                    songs.map((song) => <SongItem key={song.id} {...song} />)
+                    songs.map((song) => {
+                      return (
+                        <SongItem
+                          onPlaySong={handlePlaySong}
+                          key={song.id}
+                          {...song}
+                        />
+                      );
+                    })
                   ) : (
                     <p style={{ textAlign: "center" }}>Không có bài hát</p>
                   )}

@@ -4,7 +4,7 @@ import IonIcon from "@reacticons/ionicons";
 import useUrl from "../../Services/Hooks/useUrl";
 import { Link } from "react-router-dom";
 
-function SongItem({ id, name, image, singles, duration }) {
+function SongItem({ id, name, image, singles, duration, source, onPlaySong }) {
   const url = useUrl();
   return (
     <li className="song-item  individual-ctn2-song-item" data-index={0}>
@@ -37,7 +37,14 @@ function SongItem({ id, name, image, singles, duration }) {
         </div>
       </div>
       <div className="individual-ctn2-song-title">
-        <span className="color-title">{name}</span>
+        <span
+          className="color-title"
+          onClick={() => {
+            onPlaySong({ id, name, image, singles, source });
+          }}
+        >
+          {name}
+        </span>
         <small className="color-small singer-list">
           {singles.map(({ id, name }) => (
             <Link
