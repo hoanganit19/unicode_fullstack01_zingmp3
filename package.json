@@ -11,6 +11,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "clsx": "^1.2.1",
+    "concurrently": "^7.6.0",
     "moment": "^2.29.4",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
@@ -29,8 +30,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "json": "json-server --watch db.json --port=3004",
-    "server": "npm run json && npm start"
+    "serve": "concurrently \"npm start\" \"json-server --watch server/db.json --port=3004\""
   },
   "eslintConfig": {
     "extends": [
@@ -49,5 +49,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "json-server": "^0.17.1"
   }
 }

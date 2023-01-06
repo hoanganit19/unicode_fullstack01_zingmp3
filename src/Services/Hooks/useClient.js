@@ -1,7 +1,9 @@
 import React from "react";
 import config from "../../Configs/Config.json";
 import endpoint from "../../Configs/Endpoint.json";
-const { SERVER_API } = config;
+const { SERVER_API, SERVER_API_PRODUCTION } = config;
+
+console.log(process.env);
 
 export default function useClient(serverApi = null) {
   //Nếu serverApi không được truyền đối số => lấy SERVER_API trong config
