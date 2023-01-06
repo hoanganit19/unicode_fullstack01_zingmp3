@@ -9,7 +9,7 @@ export default function useClient(serverApi = null) {
   serverApi =
     serverApi ?? process.env.NODE_ENV === "development"
       ? SERVER_API
-      : "SERVER_API_PRODUCTION";
+      : SERVER_API_PRODUCTION;
 
   console.log(serverApi);
 
