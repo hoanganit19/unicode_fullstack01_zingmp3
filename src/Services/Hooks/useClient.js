@@ -3,11 +3,15 @@ import config from "../../Configs/Config.json";
 import endpoint from "../../Configs/Endpoint.json";
 const { SERVER_API, SERVER_API_PRODUCTION } = config;
 
-console.log(process.env);
-
 export default function useClient(serverApi = null) {
   //Nếu serverApi không được truyền đối số => lấy SERVER_API trong config
-  serverApi = serverApi ?? SERVER_API;
+
+  serverApi =
+    serverApi ?? process.env.NODE_ENV === "development"
+      ? SERVER_API
+      : "SERVER_API_PRODUCTION";
+
+  console.log(serverApi);
 
   const client = {
     ...endpoint,
