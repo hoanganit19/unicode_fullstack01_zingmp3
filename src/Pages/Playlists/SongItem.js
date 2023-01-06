@@ -5,6 +5,7 @@ import useUrl from "../../Services/Hooks/useUrl";
 import { Link } from "react-router-dom";
 
 function SongItem({ id, name, image, singles, duration, source, onPlaySong }) {
+  source = window.location.origin + source;
   const url = useUrl();
   return (
     <li className="song-item  individual-ctn2-song-item" data-index={0}>
