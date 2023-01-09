@@ -14,10 +14,12 @@ import {
 } from "../../Components/Player/playerSlice";
 moment.locale("vi");
 
-const { setSong } = playerActions;
+const { setSong, setPlayerStatus } = playerActions;
 
 const Playlists = () => {
   const dispatch = useDispatch();
+  const { song: songPlaying, playerStatus } = useSelector(playerSelector);
+
   const client = useClient();
   const { id } = useParams();
   const [playlist, setPlaylist] = useState([]);
@@ -29,12 +31,20 @@ const Playlists = () => {
   const getPlaylist = async () => {
     const res = await client.get(client.playlists + "/" + id);
     setPlaylist(res.data);
-    console.log(res.data);
     setLoading(false);
   };
 
   const handlePlaySong = (song) => {
-    dispatch(setSong(song));
+    /*
+    - Nếu songPlaying trả về object rỗng
+    - Nếu song và songPlaying trùng
+    */
+
+    if (songPlaying.id === song.id) {
+      dispatch(setPlayerStatus(playerStatus === "play" ? "pause" : "play"));
+    } else {
+      dispatch(setSong(song));
+    }
   };
 
   const { name, thumbnail, banner, updated_at, singer, follow, songs } =
@@ -112,6 +122,7 @@ const Playlists = () => {
                           onPlaySong={handlePlaySong}
                           key={song.id}
                           {...song}
+                          songPlaying={songPlaying}
                         />
                       );
                     })

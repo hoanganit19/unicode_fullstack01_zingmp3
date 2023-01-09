@@ -4,14 +4,19 @@ import Footer from "../Footer/Footer";
 import RouteCore from "../../Services/Routes/RouteCore";
 import Sidebar from "../Sidebar/Sidebar";
 import { authActions } from "../../Pages/Auth/authSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
 import Player from "../../Components/Player/Player";
+import {
+  playerSelector,
+  fetchSongById,
+} from "../../Components/Player/playerSlice";
 
 const { getUser } = authActions;
 
 export default function Main() {
   const dispatch = useDispatch();
+  const { song } = useSelector(playerSelector);
 
   const { user, isAuthenticated, isLoading } = useAuth0();
 
@@ -25,6 +30,13 @@ export default function Main() {
     );
   }, [isLoading]);
 
+  useEffect(() => {
+    if (localStorage.getItem("currentSong")) {
+      const songId = localStorage.getItem("currentSong");
+      dispatch(fetchSongById(songId));
+    }
+  }, []);
+
   return (
     <div id="app">
       <div className="background"></div>
@@ -37,7 +49,7 @@ export default function Main() {
               <RouteCore />
             </div>
           </div>
-          <Player />
+          {Object.keys(song).length && <Player />}
         </div>
       </div>
     </div>

@@ -18,10 +18,12 @@ const { setPlayerStatus } = playerActions;
 export default function Player() {
   const dispatch = useDispatch();
   const { playerStatus, song } = useSelector(playerSelector);
+
   const time = useTime();
   const timerRangerRef = useRef();
   const audioRef = useRef();
   const [duration, setDuration] = useState(0);
+  const [isFirstLoad, setIsFirstLoad] = useState(false);
 
   useEffect(() => {
     if (duration > 0) {
@@ -34,6 +36,30 @@ export default function Player() {
       document.addEventListener("mouseup", handleClickUpTimer);
     }
   }, [duration]);
+
+  //console.log(song);
+
+  useEffect(() => {
+    if (Object.keys(song).length > 0 && isFirstLoad) {
+      audioRef.current.currentTime = 0;
+      handlePlay(true);
+      localStorage.setItem("currentSong", song.id);
+    }
+  }, [song]);
+
+  useEffect(() => {
+    if (Object.keys(song).length > 0) {
+      setIsFirstLoad(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (playerStatus === "play") {
+      audioRef.current.play();
+    } else {
+      audioRef.current.pause();
+    }
+  }, [playerStatus]);
 
   //Phương thức xử lý liên quan đến audio
   const loadDataAudio = () => {
@@ -131,15 +157,20 @@ export default function Player() {
   };
 
   //Click vào nút play
-  const handlePlay = () => {
-    if (audioRef.current.paused) {
-      audioRef.current.play();
-    } else {
-      audioRef.current.pause();
-    }
+  const handlePlay = (forcePlay = false) => {
+    if (!forcePlay) {
+      if (audioRef.current.paused) {
+        audioRef.current.play();
+      } else {
+        audioRef.current.pause();
+      }
 
-    //Cập nhật state lên redux
-    dispatch(setPlayerStatus(audioRef.current.paused ? "paused" : "play"));
+      //Cập nhật state lên redux
+      dispatch(setPlayerStatus(audioRef.current.paused ? "paused" : "play"));
+    } else {
+      audioRef.current.play();
+      dispatch(setPlayerStatus("play"));
+    }
   };
 
   //Cập nhật timer khi nhạc chạy
@@ -153,7 +184,13 @@ export default function Player() {
     }
   };
 
-  const { name, image, source } = song;
+  //Xử lý khi hết bài
+  const handleEnded = () => {
+    audioRef.current.load();
+    dispatch(setPlayerStatus("pause"));
+  };
+
+  const { name, image, source, singles } = song;
 
   return (
     <div className="zing-controls">
@@ -163,6 +200,7 @@ export default function Player() {
           ref={audioRef}
           onLoadedData={loadDataAudio}
           onTimeUpdate={handleTimeUpdate}
+          onEnded={handleEnded}
         />
       </div>
       <div className="l-4 m-3 c-9">
@@ -172,7 +210,11 @@ export default function Player() {
           </div>
           <div className="control-left-title">
             <h1 className="color-title">{name}</h1>
-            <small className="color-small">Phao, KAIZ Remix</small>
+            <small className="color-small player-singes">
+              {singles?.map(({ id, name }) => (
+                <span key={id}>{name}</span>
+              ))}
+            </small>
           </div>
           <div className="icon-favorite color-small " data-index="${index}">
             <div className="no-favorite zingchart-icon icon-tym action-hover">
@@ -216,7 +258,9 @@ export default function Player() {
             <div className="play c-0">
               <div
                 className="play-music control-icon action-hover  color-title"
-                onClick={handlePlay}
+                onClick={() => {
+                  handlePlay(false);
+                }}
               >
                 <IonIcon
                   name={clsx(

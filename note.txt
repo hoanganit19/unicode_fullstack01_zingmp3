@@ -22,3 +22,7 @@ Yêu cầu ngày 19/12/2022
 - Check trạng thái đăng nhập ở Middlewares để chắc chắn tài khoản đăng nhập mới có quyền truy cập
 
 - Test lại bằng cách Reload trang: ca-nhan/tai-khoan
+
+Tình huống liên quan đến player 
+
+- Ẩn player nếu không có nhạc chạy

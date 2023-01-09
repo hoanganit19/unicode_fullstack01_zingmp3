@@ -3,12 +3,33 @@ import PropTypes from "prop-types";
 import IonIcon from "@reacticons/ionicons";
 import useUrl from "../../Services/Hooks/useUrl";
 import { Link } from "react-router-dom";
-
-function SongItem({ id, name, image, singles, duration, source, onPlaySong }) {
+import clsx from "clsx";
+import { useSelector } from "react-redux";
+import { playerSelector } from "../../Components/Player/playerSlice";
+function SongItem({
+  id,
+  name,
+  image,
+  singles,
+  duration,
+  source,
+  songPlaying,
+  onPlaySong,
+}) {
   source = window.location.origin + source;
   const url = useUrl();
+  // console.log(songPlaying);
+
+  const { playerStatus } = useSelector(playerSelector);
+
   return (
-    <li className="song-item  individual-ctn2-song-item" data-index={0}>
+    <li
+      className={clsx(
+        "song-item individual-ctn2-song-item",
+        songPlaying.id == id && "active"
+      )}
+      data-index={0}
+    >
       <div className="checkbox-wrapper color-main " data-index={0}>
         <IonIcon
           className="checkBox-icon-music md hydrated"
@@ -20,11 +41,18 @@ function SongItem({ id, name, image, singles, duration, source, onPlaySong }) {
           <input type="checkbox" />
         </div>
       </div>
-      <div className="individual-ctn2-song-item-img">
+      <div
+        className="individual-ctn2-song-item-img"
+        onClick={() => {
+          onPlaySong({ id, name, image, singles, source });
+        }}
+      >
         <img src={image} alt="" className="individual-ctn2-song-img" />
         <div className="individual-ctn2-song-item-icon" data-index={0}>
           <IonIcon
-            name="play"
+            name={clsx(
+              songPlaying.id == id && playerStatus == "play" ? "pause" : "play"
+            )}
             role="img"
             className="md hydrated"
             aria-label="play"

@@ -11,8 +11,6 @@ export default function useClient(serverApi = null) {
       ? SERVER_API
       : SERVER_API_PRODUCTION;
 
-  console.log(serverApi);
-
   const client = {
     ...endpoint,
     callApi: async function (
