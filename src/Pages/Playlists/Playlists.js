@@ -14,7 +14,7 @@ import {
 } from "../../Components/Player/playerSlice";
 moment.locale("vi");
 
-const { setSong, setPlayerStatus } = playerActions;
+const { setSong, setPlayerStatus, setEvent } = playerActions;
 
 const Playlists = () => {
   const dispatch = useDispatch();
@@ -44,6 +44,7 @@ const Playlists = () => {
       dispatch(setPlayerStatus(playerStatus === "play" ? "pause" : "play"));
     } else {
       dispatch(setSong(song));
+      dispatch(setEvent("play"));
     }
   };
 

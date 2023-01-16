@@ -13,17 +13,17 @@ let currentTime = 0;
 let isSeeking = false;
 let currentRate = 0;
 
-const { setPlayerStatus } = playerActions;
+const { setPlayerStatus, setEvent } = playerActions;
 
 export default function Player() {
   const dispatch = useDispatch();
-  const { playerStatus, song } = useSelector(playerSelector);
+  const { playerStatus, song, event } = useSelector(playerSelector);
 
   const time = useTime();
   const timerRangerRef = useRef();
   const audioRef = useRef();
   const [duration, setDuration] = useState(0);
-  const [isFirstLoad, setIsFirstLoad] = useState(false);
+  // const [isFirstLoad, setIsFirstLoad] = useState(false);
 
   useEffect(() => {
     if (duration > 0) {
@@ -40,18 +40,19 @@ export default function Player() {
   //console.log(song);
 
   useEffect(() => {
-    if (Object.keys(song).length > 0 && isFirstLoad) {
+    if (Object.keys(song).length > 0 && event !== null) {
       audioRef.current.currentTime = 0;
       handlePlay(true);
+      dispatch(setEvent(null));
       localStorage.setItem("currentSong", song.id);
     }
   }, [song]);
 
-  useEffect(() => {
-    if (Object.keys(song).length > 0) {
-      setIsFirstLoad(true);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (Object.keys(song).length > 0) {
+  //     setIsFirstLoad(true);
+  //   }
+  // }, [status]);
 
   useEffect(() => {
     if (playerStatus === "play") {

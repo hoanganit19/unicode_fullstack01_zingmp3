@@ -4,6 +4,7 @@ import useClient from "../../Services/Hooks/useClient";
 const initialState = {
   playerStatus: "pause",
   song: {},
+  event: null,
 };
 
 const playerSlice = createSlice({
@@ -16,9 +17,13 @@ const playerSlice = createSlice({
     setSong: (state, action) => {
       state.song = action.payload;
     },
+    setEvent: (state, action) => {
+      state.event = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchSongById.fulfilled, (state, action) => {
+      state.status = "succeeded";
       state.song = action.payload;
     });
   },

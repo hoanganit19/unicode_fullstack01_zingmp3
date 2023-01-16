@@ -14,6 +14,15 @@ export default function SearchForm() {
 
   useEffect(() => {
     getTrending();
+    document.addEventListener("click", () => {
+      handlFocusSearch(true);
+    });
+
+    document.addEventListener("keyup", (e) => {
+      if (e.code === "Escape") {
+        handlFocusSearch(true);
+      }
+    });
   }, []);
 
   const getSongs = async (keywords) => {
@@ -31,10 +40,7 @@ export default function SearchForm() {
   };
 
   const handlFocusSearch = (status) => {
-    const time = !status ? 0 : 500;
-    setTimeout(() => {
-      setHide(status);
-    }, time);
+    setHide(status);
   };
 
   const handleSearch = (e) => {
@@ -46,9 +52,15 @@ export default function SearchForm() {
   };
 
   const postKeywords = async (keyword) => {
-    await client.post(client.keywords, {
+    const { response, data } = await client.get(client.keywords, {
       keyword: keyword,
     });
+
+    if (response.ok && data.length == 0) {
+      await client.post(client.keywords, {
+        keyword: keyword,
+      });
+    }
   };
 
   const handlePostKeywords = () => {
@@ -60,6 +72,10 @@ export default function SearchForm() {
   const getTrending = async () => {
     const res = await client.get(client.trendingSearch);
     setTrending(res.data);
+  };
+
+  const handleClickSuggest = (e) => {
+    e.stopPropagation();
   };
 
   return (
@@ -77,13 +93,13 @@ export default function SearchForm() {
         className="color-main"
         element="input"
         placeholder="Tìm kiếm bài hát, nghệ sĩ, lời bài hát..."
-        onFocus={() => {
+        onFocus={(e) => {
           handlFocusSearch(false);
         }}
-        onBlur={() => {
-          handlFocusSearch(true);
-        }}
         onChange={handleSearch}
+        onClick={(e) => {
+          e.stopPropagation();
+        }}
       />
       {/* ------------------------- */}
       <SearchSuggest
@@ -92,7 +108,17 @@ export default function SearchForm() {
         suggests={suggests}
         onPostKeywords={handlePostKeywords}
         trending={trending}
+        onClick={handleClickSuggest}
+        onFofusSearch={handlFocusSearch}
       />
     </div>
   );
 }
+
+/*
+TH1: onClick ra ngoài search suggest => Đóng suggest
+TH2: onClick vào search suggest:
+- Click vào text, nút play => Không tắt
+- Click vào link => Tắt và chuyển trang
+
+*/

@@ -1,21 +1,43 @@
-import React, { useEffect } from "react";
+import React from "react";
 import clsx from "clsx";
 import IonIcon from "@reacticons/ionicons";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  playerActions,
+  playerSelector,
+} from "../../../Components/Player/playerSlice";
+
+const { setSong, setPlayerStatus, setEvent } = playerActions;
 
 export default function SearchSuggest({
   isHide,
   songs,
   suggests,
-  onPostKeywords,
   trending,
+  onPostKeywords,
+  onClick,
+  onFofusSearch,
 }) {
+  const dispatch = useDispatch();
+
+  const { song: songPlaying, playerStatus } = useSelector(playerSelector);
+
   const handleClickResult = () => {
     onPostKeywords();
   };
 
+  const handlePlay = (song) => {
+    if (songPlaying.id === song.id) {
+      dispatch(setPlayerStatus(playerStatus === "play" ? "pause" : "play"));
+    } else {
+      dispatch(setSong(song));
+      dispatch(setEvent("play"));
+    }
+  };
+
   return (
-    <div className={clsx("info-search", isHide && "hide")}>
+    <div className={clsx("info-search", isHide && "hide")} onClick={onClick}>
       <div className="info-search-main">
         {songs.data?.length > 0 ? (
           <div className="show-Results">
@@ -27,7 +49,14 @@ export default function SearchSuggest({
                 {suggests.data?.length > 0 &&
                   suggests.data.map(({ id, keyword }) => {
                     return (
-                      <li className="item" key={id} onClick={handleClickResult}>
+                      <li
+                        className="item"
+                        key={id}
+                        onClick={() => {
+                          handleClickResult();
+                          onFofusSearch(true);
+                        }}
+                      >
                         <span className="color-small">
                           <i className="fa-solid fa-arrow-trend-up" />
                         </span>
@@ -42,13 +71,16 @@ export default function SearchSuggest({
                 <h1 className="color-title">Gợi ý kết quả</h1>
               </div>
               <div className="body">
-                {songs.data.map(({ id, image, name, singles }) => {
+                {songs.data.map(({ id, image, name, singles, source }) => {
                   const singleJsx = singles?.map(({ id, name }) => {
                     return (
                       <Link
                         key={id}
                         className="singer color-small"
                         to={"/ca-sy/" + id}
+                        onClick={() => {
+                          onFofusSearch(true);
+                        }}
                       >
                         {name}
                       </Link>
@@ -66,9 +98,18 @@ export default function SearchSuggest({
                           alt={name}
                           className="individual-ctn2-song-img"
                         />
-                        <div className="individual-ctn2-song-item-icon">
+                        <div
+                          className="individual-ctn2-song-item-icon"
+                          onClick={() => {
+                            handlePlay({ id, name, image, singles, source });
+                          }}
+                        >
                           <IonIcon
-                            name="play"
+                            name={clsx(
+                              songPlaying.id == id && playerStatus == "play"
+                                ? "pause"
+                                : "play"
+                            )}
                             role="img"
                             className="md hydrated"
                             aria-label="play"
@@ -83,7 +124,14 @@ export default function SearchSuggest({
                       </div>
                       <div className="individual-ctn2-song-title">
                         <span className="color-title">
-                          <Link to={"/bai-hat/abc"}>{name}</Link>
+                          <Link
+                            to={"/bai-hat/abc"}
+                            onClick={() => {
+                              onFofusSearch(true);
+                            }}
+                          >
+                            {name}
+                          </Link>
                         </span>
                         <small className="color-small">{singleJsx}</small>
                       </div>
@@ -102,7 +150,13 @@ export default function SearchSuggest({
               {trending.length > 0 &&
                 trending.map(({ id, name }) => {
                   return (
-                    <li className="item" key={id}>
+                    <li
+                      className="item"
+                      key={id}
+                      onClick={() => {
+                        onFofusSearch(true);
+                      }}
+                    >
                       <span className="color-small">
                         <i className="fa-solid fa-arrow-trend-up" />
                       </span>
