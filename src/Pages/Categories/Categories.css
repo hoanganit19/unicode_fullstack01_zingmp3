@@ -1,0 +1,41 @@
+.categories .categories__list {
+  padding: 30px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-between;
+}
+.categories .categories__list .categories--item {
+  flex-basis: calc(25% - 10px);
+  max-width: calc(25% - 10px);
+  position: relative;
+}
+.categories .categories__list .categories--item a {
+  text-decoration: none;
+  color: #fff;
+}
+.categories .categories__list .categories--item .categories--item--info {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  padding: 0 15px;
+}
+.categories .categories__list .categories--item .categories--item--info .categories__playlists {
+  margin-top: 10px;
+  display: flex;
+  gap: 5px;
+}
+.categories .categories__list .categories--item .categories--item--info .categories__playlists img {
+  width: 50px;
+  height: 50px;
+}
+.categories .categories__list .categories--item .singer {
+  margin-top: 10px;
+  color: #fff;
+}
+.categories .categories__list .categories--item .singer a {
+  color: #efefef;
+  font-size: 0.9rem;
+  margin-right: 5px;
+}/*# sourceMappingURL=Categories.css.map */

@@ -1,0 +1,35 @@
+.playlist {
+  color: #fff;
+}
+.playlist .playlist-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+.playlist .playlist-info {
+  padding: 20px 0;
+  color: #fff;
+  text-align: center;
+  line-height: 1.5;
+}
+.playlist .playlist-info a {
+  text-decoration: none;
+  color: #efefef;
+}
+.playlist .playlist-info p {
+  color: #efefef;
+}
+.playlist .playlist-info .individual-btn {
+  margin-left: auto;
+  margin-right: auto;
+}
+.playlist .singer-list a + a::before {
+  content: ", ";
+  color: #fff;
+}
+.playlist .singer-list a:hover {
+  color: #999;
+}
+.playlist .singer-list a:hover::before {
+  color: #fff;
+}/*# sourceMappingURL=Playlists.css.map */
